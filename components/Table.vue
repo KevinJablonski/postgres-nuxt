@@ -20,13 +20,7 @@
         class="flex items-center justify-between py-3"
       >
         <div class="flex items-center space-x-4">
-          <img
-            :src="require('~/assets/images/scissor.png')"
-            :alt="stylist.name"
-            :width="48"
-            :height="48"
-            class="rounded-full ring-1 ring-gray-900/5"
-          />
+         
           <div class="space-y-1">
             <p class="font-medium leading-none">{{ stylist?.name }}</p>
             <p class="text-sm text-gray-500">{{ stylist?.email }}</p>
