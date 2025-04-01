@@ -21,7 +21,7 @@
       >
         <div class="flex items-center space-x-4">
           <img
-            :src="~/assets/images/scissor.png"
+            :src="require('~/assets/images/scissor.png')"
             :alt="stylist.name"
             :width="48"
             :height="48"
