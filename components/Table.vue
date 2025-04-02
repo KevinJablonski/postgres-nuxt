@@ -4,9 +4,9 @@
   >
     <div class="flex items-center justify-between mb-4">
       <div class="space-y-1">
-        <h2 class="text-xl font-semibold">Available Stylist</h2>
+        <h2 class="text-xl font-semibold">Available Stylists</h2>
         <p class="text-sm text-gray-500">
-          Fetched {{ stylists?.length }} stylists in {{ duration }}ms
+          Fetched {{ stylists?.length || 0 }} stylists in {{ duration || 0 }}ms
         </p>
       </div>
       <button class="hover:opacity-80" @click="refreshPage">
@@ -20,7 +20,6 @@
         class="flex items-center justify-between py-3"
       >
         <div class="flex items-center space-x-4">
-         
           <div class="space-y-1">
             <p class="font-medium leading-none">{{ stylist?.name }}</p>
             <p class="text-sm text-gray-500">{{ stylist?.email }}</p>
@@ -37,13 +36,15 @@ import ms from 'ms'
 
 export default {
   props: {
-   stylists: {
+    stylists: {
       type: Array,
       required: true,
+      default: () => []  // Default to an empty array if not passed
     },
     duration: {
       type: Number,
       required: true,
+      default: 0  // Default to 0 if duration is not provided
     },
   },
   methods: {
@@ -56,11 +57,10 @@ export default {
     refreshPage() {
       location.reload()
     },
-  },  
+  },
   mounted() {
     // Log the props inside the mounted hook
     console.log("Components", this.stylists, this.duration)
   },
 }
-
 </script>
