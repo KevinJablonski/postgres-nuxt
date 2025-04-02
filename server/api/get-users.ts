@@ -32,7 +32,9 @@ async function seed() {
 export default defineEventHandler(async () => {
   const startTime = Date.now()
   try {
+    console.log("Stylists!")
     const stylists = await sql`SELECT * FROM stylists`
+    console.log("Stylists!:", stylists)
     const duration = Date.now() - startTime
     return {
       stylists,

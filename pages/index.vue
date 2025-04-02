@@ -13,5 +13,5 @@
 </template>
 
 <script setup>
-const { data } = useFetch('/api/get-users')
+const { data } = await useFetch('/api/get-users')
 </script>
