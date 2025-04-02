@@ -4,7 +4,7 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' })
 
 async function seed() {
   const createTable = await sql`
-    CREATE TABLE IF NOT EXISTS Stylists (
+    CREATE TABLE IF NOT EXISTS stylists (
     stylist_id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     specialization VARCHAR(100),
