@@ -6,7 +6,7 @@
       <div class="space-y-1">
         <h2 class="text-xl font-semibold">Available Stylists</h2>
         <p class="text-sm text-gray-500">
-          Fetched {{ stylists?.length || 0 }} stylists in {{ duration || 0 }}ms
+          Fetched {{ stylists?.length || 0 }} stylists 
         </p>
       </div>
       <button class="hover:opacity-80" @click="refreshPage">
@@ -25,7 +25,7 @@
             <p class="text-sm text-gray-500">{{ stylist?.email }}</p>
           </div>
         </div>
-        <p class="text-sm text-gray-500">{{ timeAgo(stylist?.phone) }}</p>
+        <p class="text-sm text-gray-500">{{ stylist?.phone }}</p>
       </div>
     </div>
   </div>
@@ -41,26 +41,16 @@ export default {
       required: true,
       default: () => []  // Default to an empty array if not passed
     },
-    duration: {
-      type: Number,
-      required: true,
-      default: 0  // Default to 0 if duration is not provided
-    },
   },
   methods: {
-    timeAgo(timestamp, timeOnly) {
-      if (!timestamp) return 'never'
-      return `${ms(Date.now() - new Date(timestamp).getTime())}${
-        timeOnly ? '' : ' ago'
-      }`
-    },
+    
     refreshPage() {
       location.reload()
     },
   },
   mounted() {
     // Log the props inside the mounted hook
-    console.log("Components", this.stylists, this.duration)
+    console.log("Components", this.stylists)
   },
 }
 </script>
