@@ -58,5 +58,8 @@ export default {
     },
   },
 }
-console.log("Components", stylists,duration)
+mounted() {
+    // Log the props inside the mounted hook
+    console.log("Components", this.stylists, this.duration)
+  },
 </script>

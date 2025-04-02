@@ -34,6 +34,7 @@ export default defineEventHandler(async () => {
   try {
     console.log("Stylists!")
     const stylists = await sql`SELECT * FROM stylists`
+    console.log("Test")
     console.log("Stylists!:", stylists)
     const duration = Date.now() - startTime
     return {
