@@ -9,7 +9,7 @@
     </h1>
 
     <!-- Only show Table when data is loaded -->
-    <Table v-if="data?" :stylists="data.stylists" " />
+    <Table v-if="data" :stylists="data.stylists" " />
   </main>
 </template>
 
