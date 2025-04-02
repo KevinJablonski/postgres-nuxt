@@ -56,10 +56,11 @@ export default {
     refreshPage() {
       location.reload()
     },
-  },
-}
-mounted() {
+  },  
+  mounted() {
     // Log the props inside the mounted hook
     console.log("Components", this.stylists, this.duration)
   },
+}
+
 </script>
