@@ -58,4 +58,5 @@ export default {
     },
   },
 }
+console.log("Components", stylists,duration)
 </script>
