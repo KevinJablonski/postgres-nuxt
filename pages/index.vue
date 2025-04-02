@@ -9,12 +9,11 @@
     </h1>
 
     <!-- Only show Table when data is loaded -->
-    <Table v-if="data" :stylists="data?.stylists" :duration="data?.duration" />
+    <Table v-if="data?.value" :stylists="data?.value?.stylists" :duration="data?.value?.duration" />
   </main>
 </template>
 
 <script setup>
-const { data, error } = await useFetch('/api/get-users')
-console.log("Data:", data)
-console.log("Error:", error)
+const { data } = await useFetch('/api/get-users')
+console.log("Data:", data?.value)  // Accessing the actual value here
 </script>
