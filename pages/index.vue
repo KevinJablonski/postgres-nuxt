@@ -78,7 +78,7 @@
     <div class="relative bg-gray-900">
       <!-- Decorative image and overlay -->
       <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
-        <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-hero-full-width.jpg" alt="" class="size-full object-cover" />
+        <img src="https://images.pexels.com/photos/3992874/pexels-photo-3992874.jpeg" alt="" class="size-full object-cover" />
       </div>
       <div aria-hidden="true" class="absolute inset-0 bg-gray-900 opacity-50" />
 
@@ -86,26 +86,6 @@
       <header class="relative z-10">
         <nav aria-label="Top">
           <!-- Top navigation -->
-          <div class="bg-gray-900">
-            <div class="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-              <!-- Currency selector -->
-              <form>
-                <div class="-ml-2 inline-grid grid-cols-1">
-                  <select id="desktop-currency" name="currency" aria-label="Currency" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-900 py-0.5 pl-2 pr-7 text-left text-base font-medium text-white focus:outline focus:outline-2 focus:-outline-offset-1 focus:outline-white sm:text-sm/6">
-                    <option v-for="currency in currencies" :key="currency">{{ currency }}</option>
-                  </select>
-                  <ChevronDownIcon class="pointer-events-none col-start-1 row-start-1 mr-1 size-5 self-center justify-self-end fill-gray-300" aria-hidden="true" />
-                </div>
-              </form>
-
-              <div class="flex items-center space-x-6">
-                <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Sign in</a>
-                <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Create an account</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Secondary navigation -->
           <div class="bg-white/10 backdrop-blur-md backdrop-filter">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div>
@@ -207,9 +187,9 @@
       </header>
 
       <div class="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
-        <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">New arrivals are here</h1>
-        <p class="mt-4 text-xl text-white">The new arrivals have, well, newly arrived. Check out the latest options from our summer small-batch release while they're still in stock.</p>
-        <a href="#" class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100">Shop New Arrivals</a>
+        <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">Book your appointment today!</h1>
+        <p class="mt-4 text-xl text-white">"Ready for a fresh new look? Book your appointment today and let our expert stylists give you the perfect summer style. Don’t wait—slots are filling up fast!"</p>
+        <a href="#" class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100">Book Now</a>
       </div>
     </div>
 
@@ -248,29 +228,10 @@
         </div>
       </section>
 
-      <!-- Featured section -->
-      <section aria-labelledby="social-impact-heading" class="mx-auto max-w-7xl px-4 pt-24 sm:px-6 sm:pt-32 lg:px-8">
-        <div class="relative overflow-hidden rounded-lg">
-          <div class="absolute inset-0">
-            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-feature-section-01.jpg" alt="" class="size-full object-cover" />
-          </div>
-          <div class="relative bg-gray-900/75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
-            <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-              <h2 id="social-impact-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                <span class="block sm:inline">Level up</span>
-                <span class="block sm:inline">your desk</span>
-              </h2>
-              <p class="mt-3 text-xl text-white">Make your desk beautiful and organized. Post a picture to social media and watch it get more likes than life-changing announcements. Reflect on the shallow nature of existence. At least you have a really nice desk setup.</p>
-              <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Shop Workspace</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Collection section -->
       <section aria-labelledby="collection-heading" class="mx-auto max-w-xl px-4 pt-24 sm:px-6 sm:pt-32 lg:max-w-7xl lg:px-8">
-        <h2 id="collection-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Collection</h2>
-        <p class="mt-4 text-base text-gray-500">Each season, we collaborate with world-class designers to create a collection inspired by the natural world.</p>
+        <h2 id="collection-heading" class="text-2xl font-bold tracking-tight text-gray-900">Meet The Stylists</h2>
+        <p class="mt-4 text-base text-gray-500">Our talented stylists craft new looks inspired by the latest trends and the beauty of nature, ensuring you always leave with a fresh and unique style.</p>
 
         <div class="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
           <a v-for="collection in collections" :key="collection.name" :href="collection.href" class="group block">
@@ -285,13 +246,13 @@
       <section aria-labelledby="comfort-heading" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div class="relative overflow-hidden rounded-lg">
           <div class="absolute inset-0">
-            <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-feature-section-02.jpg" alt="" class="size-full object-cover" />
+            <img src="https://images.pexels.com/photos/3993320/pexels-photo-3993320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="size-full object-cover" />
           </div>
           <div class="relative bg-gray-900/75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
             <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-              <h2 id="comfort-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Simple productivity</h2>
-              <p class="mt-3 text-xl text-white">Endless tasks, limited hours, a single piece of paper. Not really a haiku, but we're doing our best here. No kanban boards, burndown charts, or tangled flowcharts with our Focus system. Just the undeniable urge to fill empty circles.</p>
-              <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">Shop Focus</a>
+              <h2 id="comfort-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Salon</h2>
+              <p class="mt-3 text-xl text-white">Welcome to [Salon Name], where creativity meets style! Our expert team is dedicated to giving you the best in hair care, whether it’s a fresh cut, bold color, or rejuvenating treatment. We focus on providing a personalized and relaxing experience every time. Let us help you look and feel your best!</p>
+              <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">About Us</a>
             </div>
           </div>
         </div>
@@ -390,126 +351,88 @@ const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
 const navigation = {
   categories: [
     {
-      name: 'Women',
+      name: 'Services',
       featured: [
         {
-          name: 'New Arrivals',
+          name: 'Haircut',
           href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
+          imageSrc: 'https://images.pexels.com/photos/3993443/pexels-photo-3993443.jpeg',
         },
         {
-          name: 'Basic Tees',
+          name: 'Color',
           href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
+          imageSrc: 'https://images.pexels.com/photos/8468142/pexels-photo-8468142.jpeg',
         },
         {
-          name: 'Accessories',
+          name: 'Blowout & Styling',
           href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-03.jpg',
-          imageAlt: 'Model wearing minimalist watch with black wristband and white watch face.',
+          imageSrc: 'https://images.pexels.com/photos/28994566/pexels-photo-28994566/free-photo-of-woman-styling-red-hair-with-a-curling-iron.jpeg',
         },
         {
-          name: 'Carry',
+          name: 'Hair Treatments',
           href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-category-04.jpg',
-          imageAlt: 'Model opening tan leather long wallet with credit card pockets and cash pouch.',
+          imageSrc: 'https://images.pexels.com/photos/8467970/pexels-photo-8467970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         },
       ],
     },
-    {
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-01-men-category-01.jpg',
-          imageAlt: 'Hats and sweaters on wood shelves next to various colors of t-shirts on hangers.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-01-men-category-02.jpg',
-          imageAlt: 'Model wearing light heather gray t-shirt.',
-        },
-        {
-          name: 'Accessories',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-01-men-category-03.jpg',
-          imageAlt:
-            'Grey 6-panel baseball hat with black brim, black mountain graphic on front, and light heather gray body.',
-        },
-        {
-          name: 'Carry',
-          href: '#',
-          imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/mega-menu-01-men-category-04.jpg',
-          imageAlt: 'Model putting folded cash into slim card holder olive leather wallet with hand stitching.',
-        },
-      ],
-    },
+
   ],
   pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
+    { name: 'About Us', href: '#' },
+    { name: 'Team', href: '#' },
+    { name: 'Contact', href: '#' },
   ],
 }
 const categories = [
-  {
-    name: 'New Arrivals',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-01.jpg',
-  },
-  {
-    name: 'Productivity',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-02.jpg',
-  },
-  {
-    name: 'Workspace',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-04.jpg',
-  },
-  {
-    name: 'Accessories',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-05.jpg',
-  },
-  {
-    name: 'Sale',
-    href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-category-03.jpg',
-  },
+{
+          name: 'Haircut',
+          href: '#',
+          imageSrc: 'https://images.pexels.com/photos/3993443/pexels-photo-3993443.jpeg',
+        },
+        {
+          name: 'Color',
+          href: '#',
+          imageSrc: 'https://images.pexels.com/photos/8468142/pexels-photo-8468142.jpeg',
+        },
+        {
+          name: 'Blowout & Styling',
+          href: '#',
+          imageSrc: 'https://images.pexels.com/photos/28994566/pexels-photo-28994566/free-photo-of-woman-styling-red-hair-with-a-curling-iron.jpeg',
+        },
+        {
+          name: 'Hair Treatments',
+          href: '#',
+          imageSrc: 'https://images.pexels.com/photos/8467970/pexels-photo-8467970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        },
 ]
 const collections = [
   {
-    name: 'Handcrafted Collection',
+    name: 'Patricia',
     href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-01.jpg',
+    imageSrc: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTBFfNkbcWjcOTaXWduRr8IYbgFGtAnWVGV1HykCCmqY_qPI9n',
     imageAlt: 'Brown leather key ring with brass metal loops and rivets on wood table.',
-    description: 'Keep your phone, keys, and wallet together, so you can lose everything at once.',
+    description: 'Meet Patricia, a skilled stylist known for her personalized approach and creative flair. Whether it’s a fresh cut or a pop of color, she’s here to make you look and feel your best!',
   },
   {
-    name: 'Organized Desk Collection',
+    name: 'Brenden',
     href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-02.jpg',
+    imageSrc: 'https://s.namemc.com/3d/skin/body.png?id=13772f0d08dcc481&model=slim&width=308&height=308',
     imageAlt: 'Natural leather mouse pad on white desk next to porcelain mug and keyboard.',
-    description: 'The rest of the house will still be a mess, but your desk will look great.',
+    description: 'Brenden is a skilled stylist with a passion for creating fresh, modern looks. With an eye for detail and a friendly, welcoming approach.',
   },
   {
-    name: 'Focus Collection',
+    name: 'Todd',
     href: '#',
-    imageSrc: 'https://tailwindcss.com/plus-assets/img/ecommerce-images/home-page-01-collection-03.jpg',
+    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPhjJMFd8tIrV4y8Ukkuni17h1vhmsYUN3vT8rh18l8kN670Qj',
     imageAlt: 'Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.',
-    description: 'Be more productive than enterprise project managers with a single piece of paper.',
+    description: 'Todd is a creative stylist known for her expert cuts and vibrant color work, delivering stylish looks with a personal touch.',
   },
 ]
 const footerNavigation = {
   shop: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
+    { name: 'Sampoo', href: '#' },
+    { name: 'Conditioner', href: '#' },
+    { name: 'Gel', href: '#' },
     { name: 'Accessories', href: '#' },
   ],
   company: [
