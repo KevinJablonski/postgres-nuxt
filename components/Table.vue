@@ -4,9 +4,9 @@
   >
     <div class="flex items-center justify-between mb-4">
       <div class="space-y-1">
-        <h2 class="text-xl font-semibold">Recent Users</h2>
+        <h2 class="text-xl font-semibold">Available Stylists</h2>
         <p class="text-sm text-gray-500">
-          Fetched {{ users?.length }} users in {{ duration }}ms
+          Fetched {{ stylists?.length || 0 }} stylists 
         </p>
       </div>
       <button class="hover:opacity-80" @click="refreshPage">
@@ -15,24 +15,17 @@
     </div>
     <div class="divide-y divide-gray-900/5">
       <div
-        v-for="user in users"
-        :key="user.id"
+        v-for="stylist in stylists"
+        :key="stylist.id"
         class="flex items-center justify-between py-3"
       >
         <div class="flex items-center space-x-4">
-          <img
-            :src="user.image"
-            :alt="user.name"
-            :width="48"
-            :height="48"
-            class="rounded-full ring-1 ring-gray-900/5"
-          />
           <div class="space-y-1">
-            <p class="font-medium leading-none">{{ user?.name }}</p>
-            <p class="text-sm text-gray-500">{{ user?.email }}</p>
+            <p class="font-medium leading-none">{{ stylist?.name }}</p>
+            <p class="text-sm text-gray-500">{{ stylist?.email }}</p>
           </div>
         </div>
-        <p class="text-sm text-gray-500">{{ timeAgo(user?.createdAt) }}</p>
+        <p class="text-sm text-gray-500">{{ stylist?.phone }}</p>
       </div>
     </div>
   </div>
@@ -43,25 +36,21 @@ import ms from 'ms'
 
 export default {
   props: {
-    users: {
+    stylists: {
       type: Array,
       required: true,
-    },
-    duration: {
-      type: Number,
-      required: true,
+      default: () => []  // Default to an empty array if not passed
     },
   },
   methods: {
-    timeAgo(timestamp, timeOnly) {
-      if (!timestamp) return 'never'
-      return `${ms(Date.now() - new Date(timestamp).getTime())}${
-        timeOnly ? '' : ' ago'
-      }`
-    },
+    
     refreshPage() {
       location.reload()
     },
+  },
+  mounted() {
+    // Log the props inside the mounted hook
+    console.log("Components", this.stylists)
   },
 }
 </script>
