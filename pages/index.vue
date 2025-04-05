@@ -186,9 +186,14 @@
         </nav>
       </header>
 
-      <div class="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
+      <!-- <div class="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
         <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">Book your appointment today!</h1>
         <p class="mt-4 text-xl text-white">"Ready for a fresh new look? Book your appointment today and let our expert stylists give you the perfect summer style. Don’t wait—slots are filling up fast!"</p>
+        <a @click="navigateTo('/clients')" class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 cursor-pointer hover:bg-gray-100">Add Clients</a>
+      </div> -->
+      <div class="relative mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center sm:py-64 lg:px-0">
+        <h1 class="text-4xl font-bold tracking-tight text-white lg:text-6xl">Add your clients today!</h1>
+        <p class="mt-4 text-xl text-white">For the submission this week of CRUD operations on one table please add clients below.</p>
         <a @click="navigateTo('/clients')" class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 cursor-pointer hover:bg-gray-100">Add Clients</a>
       </div>
     </div>
@@ -409,22 +414,22 @@ const collections = [
   {
     name: 'Patricia',
     href: '#',
-    imageSrc: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTBFfNkbcWjcOTaXWduRr8IYbgFGtAnWVGV1HykCCmqY_qPI9n',
-    imageAlt: 'Brown leather key ring with brass metal loops and rivets on wood table.',
+    // imageSrc: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSTBFfNkbcWjcOTaXWduRr8IYbgFGtAnWVGV1HykCCmqY_qPI9n',
+    imageSrc: 'https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg',
     description: 'Meet Patricia, a skilled stylist known for her personalized approach and creative flair. Whether it’s a fresh cut or a pop of color, she’s here to make you look and feel your best!',
   },
   {
     name: 'Brenden',
     href: '#',
-    imageSrc: 'https://s.namemc.com/3d/skin/body.png?id=13772f0d08dcc481&model=slim&width=308&height=308',
-    imageAlt: 'Natural leather mouse pad on white desk next to porcelain mug and keyboard.',
+    // imageSrc: 'https://s.namemc.com/3d/skin/body.png?id=13772f0d08dcc481&model=slim&width=308&height=308',
+    imageSrc: 'https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg',
     description: 'Brenden is a skilled stylist with a passion for creating fresh, modern looks. With an eye for detail and a friendly, welcoming approach.',
   },
   {
     name: 'Todd',
     href: '#',
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPhjJMFd8tIrV4y8Ukkuni17h1vhmsYUN3vT8rh18l8kN670Qj',
-    imageAlt: 'Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.',
+    // imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPhjJMFd8tIrV4y8Ukkuni17h1vhmsYUN3vT8rh18l8kN670Qj',
+    imageSrc: 'https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg',
     description: 'Todd is a creative stylist known for her expert cuts and vibrant color work, delivering stylish looks with a personal touch.',
   },
 ]
@@ -432,16 +437,13 @@ const footerNavigation = {
   shop: [
     { name: 'Sampoo', href: '#' },
     { name: 'Conditioner', href: '#' },
-    { name: 'Gel', href: '#' },
     { name: 'Accessories', href: '#' },
   ],
   company: [
     { name: 'Who we are', href: '#' },
     { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
     { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
+
   ],
   account: [
     { name: 'Manage Account', href: '#' },
@@ -452,7 +454,6 @@ const footerNavigation = {
     { name: 'Contact Us', href: '#' },
     { name: 'Facebook', href: '#' },
     { name: 'Instagram', href: '#' },
-    { name: 'Pinterest', href: '#' },
   ],
 }
 

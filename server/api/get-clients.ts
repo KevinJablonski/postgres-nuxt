@@ -15,9 +15,8 @@ export default defineEventHandler(async () => {
     // Get all clients from the database
     const clients = await getAllClients()
 
-    return {
-      clients,
-    }
+    return clients
+    
   } catch (error) {
     console.error('Error while retrieving clients:', error)
     return {
