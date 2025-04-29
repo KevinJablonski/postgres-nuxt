@@ -28,26 +28,39 @@ export default defineEventHandler(async (event) => {
 
   // PUT /api/stylists/:id — update a stylist
   if (method === 'PUT') {
-    const { name, specialization, photo_url } =
-      await readBody<Partial<{ name: string; specialization: string; photo_url: string }>>(event)
-
-    const updates: string[] = []
-    const values: any[] = []
-    if (name !== undefined)          { updates.push(`name = $${updates.length+1}`);          values.push(name) }
-    if (specialization !== undefined){ updates.push(`specialization = $${updates.length+1}`);values.push(specialization) }
-    if (photo_url !== undefined)     { updates.push(`photo_url = $${updates.length+1}`);     values.push(photo_url) }
-
-    if (!updates.length) {
-      throw createError({ statusCode: 400, statusMessage: 'No fields to update' })
+    // 1) Read the request body exactly once
+    const body = await readBody<{
+      name?: string
+      specialization?: string
+      photo_url?: string
+    }>(event)
+  
+    // 2) Ensure at least one field was provided
+    if (
+      body.name        === undefined &&
+      body.specialization === undefined &&
+      body.photo_url   === undefined
+    ) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Provide at least one of name, specialization, or photo_url'
+      })
     }
-
+  
     try {
+      // 3) Use COALESCE to keep existing values when undefined
       const [updated] = await sql`
         UPDATE stylists
-           SET ${sql(updates.join(', '), ...values)}
+           SET
+             name           = COALESCE(${body.name}, name),
+             specialization = COALESCE(${body.specialization}, specialization),
+             photo_url      = COALESCE(${body.photo_url}, photo_url)
          WHERE id = ${+id}
         RETURNING id, name, specialization, photo_url
       `
+      if (!updated) {
+        throw createError({ statusCode: 404, statusMessage: 'Stylist not found' })
+      }
       return updated
     } catch (err: any) {
       console.error(`PUT /api/stylists/${id} error:`, err)

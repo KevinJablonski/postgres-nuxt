@@ -28,7 +28,7 @@
 
         <div class="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
           <a v-for="stylist in stylists" :key="stylist.name" class="group block">
-            <img :src="stylist.photo_url"  class="aspect-[3/2] w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-[5/6]" />
+            <img :src="stylist.photo_url || '/images/default-avatar.png'"  class="aspect-[3/2] w-full rounded-lg object-cover group-hover:opacity-75 lg:aspect-[5/6]" />
             <h3 class="mt-4 text-base font-semibold text-gray-900">{{ stylist.name }}</h3>
             <p class="mt-2 text-sm text-gray-500">Specialization: {{ stylist.specialization }}</p>
           </a>

@@ -11,11 +11,22 @@ export default defineEventHandler(async (event) => {
   if (method === 'GET') {
     try {
       const stylists = await sql`
-        SELECT id, name, specialization, photo_url
-          FROM stylists
-        ORDER BY id
-      `
-      return stylists
+      SELECT
+        s.id,
+        s.name,
+        s.specialization,
+        s.photo_url,
+        get_stylist_avg_rating(s.id) AS avg_rating,
+        (
+          SELECT COUNT(*) 
+            FROM stylist_schedule ss
+           WHERE ss.stylist_id = s.id
+             AND ss.appointment_datetime > NOW()
+        ) AS upcoming_count
+      FROM stylists s
+      ORDER BY s.id
+    `
+    return stylists
     } catch (err: any) {
       console.error('GET /api/stylists error:', err)
       throw createError({ statusCode: 500, statusMessage: 'Failed to fetch stylists' })

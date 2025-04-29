@@ -28,27 +28,33 @@ export default defineEventHandler(async (event) => {
 
   // PUT /api/services/:id  — update a service
   if (method === 'PUT') {
-    const { name, description, price } = await readBody<{
+
+    const body = await readBody<{
       name?: string
       description?: string
       price?: number
     }>(event)
-
     // Build dynamic SET clause
     const updates: string[] = []
     const values: any[] = []
-    if (name !== undefined)        { updates.push(`name = $${updates.length+1}`);        values.push(name) }
-    if (description !== undefined) { updates.push(`description = $${updates.length+1}`); values.push(description) }
-    if (price !== undefined)       { updates.push(`price = $${updates.length+1}`);       values.push(price) }
 
-    if (!updates.length) {
-      throw createError({ statusCode: 400, statusMessage: 'No fields to update' })
+    if (
+      body.name        === undefined &&
+      body.description === undefined &&
+      body.price  === undefined
+    ) {
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Provide at least one of name, description, or price'
+      })
     }
-
     try {
       const [updated] = await sql`
         UPDATE services
-           SET ${sql(updates.join(', '), ...values)}
+           SET 
+             name           = COALESCE(${body.name}, name),
+             description = COALESCE(${body.description}, description),
+             price      = COALESCE(${body.price}, price)
          WHERE id = ${+id}
         RETURNING id, name, description, price
       `
