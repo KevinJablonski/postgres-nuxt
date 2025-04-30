@@ -14,10 +14,10 @@
           </div>
           
 
-          <div class="min-w-full px-4 sm:px-6 lg:px-8">
+          <div class="min-w-full">
             <div class="mt-8 flow-root">
               <div class="w-full overflow-x-auto">
-                <div class="mx-auto max-w-screen-2xl py-2 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-screen-2xl py-2">
                   <div class="shadow rounded-lg">
                     <table class="w-full divide-y divide-gray-300">
                       <thead class="bg-gray-50">
@@ -25,7 +25,7 @@
                           <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 ">Name/Specialty</th>
                           <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Avg. Rating</th>
                           <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Upcoming Appts.</th>
-                          
+                          <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900">Actions</th>
                         </tr>
                       </thead>
                       <tbody class="divide-y divide-gray-200">

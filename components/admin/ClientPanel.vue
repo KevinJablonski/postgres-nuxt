@@ -3,7 +3,7 @@
     <main class="flex-grow">
       <section
         aria-labelledby="clients-heading"
-        class="bg-white mx-auto max-w-7xl h-page px-4 py-24 sm:px-6 sm:py-32 lg:px-8"
+        class="bg-white mx-auto max-w-7xl h-page px-4 py-12 "
       >
         <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
           <div class="ml-4 mt-2">
@@ -22,10 +22,10 @@
           </div>
         </div>
 
-        <div class="min-w-full px-4 sm:px-6 lg:px-8">
+        <div class="min-w-full ">
           <div class="mt-8 flow-root">
             <div class="w-full overflow-x-auto">
-              <div class="mx-auto max-w-screen-2xl py-2 sm:px-6 lg:px-8">
+              <div class="mx-auto max-w-screen-2xl py-2">
                 <div class="shadow rounded-lg">
                   <table class="w-full divide-y divide-gray-300">
                     <thead class="bg-gray-50">
@@ -45,9 +45,12 @@
                         >
                           Phone
                         </th>
-                        <th class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                          <span class="sr-only">Actions</span>
+                        <th
+                          class="px-3 py-3.5 text-center text-sm font-semibold text-gray-900"
+                        >
+                          Actions
                         </th>
+                        
                       </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">

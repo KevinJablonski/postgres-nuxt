@@ -60,6 +60,14 @@ import {
   UserCircleIcon,
   FingerPrintIcon,
   BellIcon,
+  ScissorsIcon,
+  UsersIcon,
+  CheckBadgeIcon,
+  CalendarDaysIcon,
+  CreditCardIcon,
+  StarIcon,
+  PhoneXMarkIcon,
+  PresentationChartBarIcon
 } from '@heroicons/vue/24/outline'
 
 // your panel components
@@ -67,11 +75,21 @@ import StylistPanel from '~/components/admin/StylistPanel.vue'
 import ServicePanel from '~/components/admin/ServicePanel.vue'
 import ClientPanel  from '~/components/admin/ClientPanel.vue'
 import AvailabilityPanel from '~/components/admin/AvailabilityPanel.vue'
+import AppointmentPanel from '~/components/admin/AppointmentPanel.vue'
+import PaymentPanel from '~/components/admin/PaymentPanel.vue'
+import ReviewPanel from '~/components/admin/ReviewPanel.vue'
+import CancellationPanel from '~/components/admin/CancellationPanel.vue'
+import ReportsPanel from '~/components/admin/ReportsPanel.vue'
 const menu = [
   { name: 'Stylists',   component: StylistPanel, icon: UserCircleIcon },
-  { name: 'Services',   component: ServicePanel, icon: FingerPrintIcon },
-  { name: 'Clients',    component: ClientPanel,  icon: BellIcon },
-  { name: 'Availability',    component: AvailabilityPanel,  icon: BellIcon },
+  { name: 'Services',   component: ServicePanel, icon: ScissorsIcon },
+  { name: 'Clients',    component: ClientPanel,  icon: UsersIcon },
+  { name: 'Availability',    component: AvailabilityPanel,  icon: CheckBadgeIcon },
+  { name: 'Appointments',    component: AppointmentPanel,  icon: CalendarDaysIcon },
+  { name: 'Payments',    component: PaymentPanel,  icon: CreditCardIcon },
+  { name: 'Reviews',    component: ReviewPanel,  icon: StarIcon },
+  { name: 'Cancellations',    component: CancellationPanel,  icon: PhoneXMarkIcon },
+  { name: 'Reports',    component: ReportsPanel,  icon: PresentationChartBarIcon },
 ]
 
 // shallowRef holds the active menu item _by reference_ but doesn’t make its nested props reactive
