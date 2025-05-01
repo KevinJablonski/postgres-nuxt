@@ -3,10 +3,10 @@ import postgres from 'postgres'
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' })
 
 export default defineEventHandler(async (event) => {
-  const m = event.node.req.method
+  const method = event.node.req.method
 
-  if (m === 'GET') {
-    // List all reviews with appointment, client, stylist context
+  if (method === 'GET') {
+    // (unchanged) list all reviews...
     const rows = await sql`
       SELECT
         r.id,
@@ -26,19 +26,71 @@ export default defineEventHandler(async (event) => {
     return rows
   }
 
-  if (m === 'POST') {
-    const { appointment_id, rating, comment } =
-      await readBody<{ appointment_id: number; rating: number; comment?: string }>(event)
-    if (!appointment_id || !rating) {
-      throw createError({ statusCode:400, statusMessage:'appointment_id and rating are required' })
+  if (method === 'POST') {
+    // read everything upfront
+    const {
+      appointment_id,
+      booking_code,
+      name,
+      email,
+      rating,
+      comment = ''
+    } = await readBody<{
+      appointment_id?: number
+      booking_code?:   string
+      name?:           string
+      email?:          string
+      rating?:         number
+      comment?:        string
+    }>(event)
+
+    let apptId: number
+
+    // 1) If they passed appointment_id, use it directly:
+    if (appointment_id) {
+      apptId = appointment_id
+
+    // 2) Otherwise, if they passed booking_code + name + email, verify and look it up:
+    } else if (booking_code && name && email) {
+      // find the appointment & client
+      const [row] = await sql`
+        SELECT a.id AS appointment_id, c.name AS client_name, c.email AS client_email
+        FROM appointments a
+        JOIN clients c ON a.client_id = c.id
+        WHERE a.booking_code = ${booking_code}
+      `
+      if (!row) {
+        throw createError({ statusCode: 404, statusMessage: 'Booking code not found' })
+      }
+      if (row.client_name !== name || row.client_email !== email) {
+        throw createError({
+          statusCode: 400,
+          statusMessage: 'Name or email does not match booking'
+        })
+      }
+      apptId = row.appointment_id
+
+    } else {
+      // neither appointment_id nor valid booking_code flow
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Must provide appointment_id or (booking_code + name + email)'
+      })
     }
-    const [r] = await sql`
+
+    // 3) rating is always required
+    if (rating == null) {
+      throw createError({ statusCode: 400, statusMessage: 'rating is required' })
+    }
+
+    // 4) finally, insert the review
+    const [newReview] = await sql`
       INSERT INTO reviews (appointment_id, rating, comment)
-      VALUES (${appointment_id}, ${rating}, ${comment})
+      VALUES (${apptId}, ${rating}, ${comment})
       RETURNING id, appointment_id, rating, comment, review_date
     `
-    return r
+    return newReview
   }
 
-  throw createError({ statusCode:405, statusMessage:'Method Not Allowed' })
+  throw createError({ statusCode: 405, statusMessage: 'Method Not Allowed' })
 })

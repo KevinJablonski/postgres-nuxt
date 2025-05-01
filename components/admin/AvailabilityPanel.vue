@@ -73,7 +73,18 @@
       <!-- Add/Edit Slot Modal -->
       <TransitionRoot as="template" :show="open">
         <Dialog class="fixed inset-0 z-10 overflow-y-auto" @close="closeModal">
-          <div class="text-black flex items-center justify-center min-h-screen px-4">
+          <TransitionChild
+            as="template"
+            enter="ease-out duration-300"
+            enter-from="opacity-0"
+            enter-to="opacity-100"
+            leave="ease-in duration-200"
+            leave-from="opacity-100"
+            leave-to="opacity-0"
+          >
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-50" aria-hidden="true" />
+          </TransitionChild>
+          <div class="text-black fixed inset-0 flex items-center justify-center px-4 py-6">
             <TransitionChild
               enter="ease-out duration-300"
               enter-from="opacity-0 scale-95"
@@ -82,7 +93,7 @@
               leave-from="opacity-100 scale-100"
               leave-to="opacity-0 scale-95"
             >
-              <DialogPanel class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+              <DialogPanel class="bg-white z-20 rounded-lg shadow-xl max-w-md w-full p-6">
                 <DialogTitle class="text-lg font-medium">
                   {{ isEditing ? 'Edit Slot' : 'New Slot' }}
                 </DialogTitle>

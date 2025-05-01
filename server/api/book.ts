@@ -5,7 +5,6 @@ import postgres from 'postgres'
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' })
 
 export default defineEventHandler(async (event) => {
-  // 1) Pull everything we need from the client
   const {
     name,
     email,
@@ -20,19 +19,17 @@ export default defineEventHandler(async (event) => {
     phone?: string
     service_id: number
     stylist_id: number
-    appointment_datetime: string  // e.g. "2025-05-03T09:00:00"
+    appointment_datetime: string
     slot_id: number
   }>(event)
 
-  // 2) Validate
   if (!name || !email || !service_id || !stylist_id || !appointment_datetime || !slot_id) {
     throw createError({ statusCode: 400, statusMessage: 'All fields are required' })
   }
 
   try {
-    // 3) Run everything inside a transaction
     const booking = await sql.begin(async sql => {
-      // A) Find or create the client
+      // 1) Upsert client
       const [existing] = await sql`
         SELECT id FROM clients WHERE email = ${email}
       `
@@ -46,21 +43,31 @@ export default defineEventHandler(async (event) => {
         client_id = newClient.id
       }
 
-      // B) Create the appointment
-      const [appt] = await sql`
-        INSERT INTO appointments
-          (client_id, service_id, stylist_id, appointment_datetime)
-        VALUES
-          (${client_id}, ${service_id}, ${stylist_id}, ${appointment_datetime})
-        RETURNING id, booking_code, appointment_datetime, status
+      // 2) Call your stored procedure to create the appointment
+      await sql`
+        CALL create_appointment(
+          ${client_id},
+          ${service_id},
+          ${stylist_id},
+          ${appointment_datetime}::timestamp
+        )
       `
 
-      // C) Remove that slot from availability
+      // 3) Fetch the appointment we just inserted
+      const [appt] = await sql`
+        SELECT id, booking_code, appointment_datetime, status
+          FROM appointments
+         WHERE client_id             = ${client_id}
+           AND service_id            = ${service_id}
+           AND stylist_id            = ${stylist_id}
+           AND appointment_datetime  = ${appointment_datetime}::timestamp
+      `
+
+      // 4) Remove the now‐booked slot
       await sql`
         DELETE FROM availability WHERE id = ${slot_id}
       `
 
-      // D) Return the new appointment
       return appt
     })
 

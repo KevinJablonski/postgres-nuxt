@@ -1,28 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import {
-  Dialog,
-  DialogPanel,
-  Popover,
-  PopoverButton,
   PopoverGroup,
-  PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-  TransitionChild,
-  TransitionRoot,
 } from '@headlessui/vue'
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
   QuestionMarkCircleIcon,
   ShoppingBagIcon,
-  XMarkIcon,
+  HomeIcon
 } from '@heroicons/vue/24/outline'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 
 const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
 const navigation = {
@@ -77,8 +64,7 @@ const footerNavigation = {
                   <!-- Logo (lg+) -->
                   <div class="hidden lg:flex lg:flex-1 lg:items-center">
                     <a href="/">
-                      <span class="sr-only">Your Company</span>
-                      <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=white" alt="" />
+                      <HomeIcon class="h-8 w-auto" />
                     </a>
                   </div>
 

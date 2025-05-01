@@ -36,21 +36,9 @@
       </section>
 
       <!-- Featured section -->
-      <section aria-labelledby="comfort-heading" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div class="relative overflow-hidden rounded-lg">
-          <div class="absolute inset-0">
-            <img src="https://images.pexels.com/photos/3993320/pexels-photo-3993320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="size-full object-cover" />
-          </div>
-          <div class="relative bg-gray-900/75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
-            <div class="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-              <h2 id="comfort-heading" class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Salon</h2>
-              <p class="mt-3 text-xl text-white">Welcome to [Salon Name], where creativity meets style! Our expert team is dedicated to giving you the best in hair care, whether it’s a fresh cut, bold color, or rejuvenating treatment. We focus on providing a personalized and relaxing experience every time. Let us help you look and feel your best!</p>
-              <a href="#" class="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto">About Us</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ReviewFlipSection />
     </main>
+    <ReviewModal v-model:show="showReview" />
   </div>
 </template>
 
@@ -62,8 +50,6 @@ const { data: stylists } = await useFetch('/api/stylists/', {
     key: "getStylists"
   });
 
-
-// <Table v-if="data" :stylists="data.stylists" " />
-// const { data } = await useFetch('/api/get-users') 
+  const showReview = ref(false)
 </script>
 

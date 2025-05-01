@@ -80,34 +80,56 @@
   
       <!-- Confirmation Modal -->
       <TransitionRoot as="template" :show="confirmed" @close="closeConfirm">
-        <Dialog class="fixed inset-0 z-10 overflow-y-auto" @close="closeConfirm">
-          <div class="text-black flex items-center justify-center min-h-screen px-4">
+      <Dialog class="relative z-10" @close="closeConfirm">
+        <!-- BACKDROP -->
+        <TransitionChild
+          as="template"
+          enter="ease-out duration-300"
+          enter-from="opacity-0"
+          enter-to="opacity-100"
+          leave="ease-in duration-200"
+          leave-from="opacity-100"
+          leave-to="opacity-0"
+        >
+          <div class="fixed inset-0 bg-gray-500/75 transition-opacity" />
+        </TransitionChild>
+
+        <!-- MODAL PANEL CONTAINER -->
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <TransitionChild
+              as="template"
               enter="ease-out duration-300"
-              enter-from="opacity-0 scale-95"
-              enter-to="opacity-100 scale-100"
+              enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              enter-to="opacity-100 translate-y-0 sm:scale-100"
               leave="ease-in duration-200"
-              leave-from="opacity-100 scale-100"
-              leave-to="opacity-0 scale-95"
+              leave-from="opacity-100 translate-y-0 sm:scale-100"
+              leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <DialogPanel class="bg-white rounded-lg shadow-xl max-w-sm w-full p-6">
-                <DialogTitle class="text-lg font-medium mb-4">
-                  🎉 Appointment Booked!
-                </DialogTitle>
-                <div class="space-y-2">
-                  <p><strong>Code:</strong> <code>{{ confirmation.booking_code }}</code></p>
-                  <p><strong>Service:</strong> {{ service?.name }}</p>
-                  <p><strong>Stylist:</strong> {{ stylistName }}</p>
-                  <p>
-                    <strong>When:</strong>
-                    {{ formatDate(confirmation.appointment_datetime.split('T')[0]) }}
-                    @ {{ confirmation.appointment_datetime.split('T')[1].slice(0,5) }}
-                  </p>
+              <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                <div>
+                  <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                    <CheckIcon class="h-6 w-6 text-green-600" aria-hidden="true" />
+                  </div>
+                  <div class="mt-3 text-center sm:mt-5">
+                    <DialogTitle as="h3" class="text-base font-semibold text-gray-900">
+                      🎉 Appointment Booked!
+                    </DialogTitle>
+                    <div class="mt-2">
+                      <p class="text-sm text-gray-500">
+                        Your booking code is <code>{{ confirmation.booking_code }}</code>.<br/>
+                        {{ service?.name }} with {{ stylistName }} on
+                        {{ formatDate(confirmation.appointment_datetime.split('T')[0]) }}
+                        at {{ confirmation.appointment_datetime.split('T')[1].slice(0,5) }}.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div class="mt-6 text-right">
+                <div class="mt-5 sm:mt-6">
                   <button
+                    type="button"
                     @click="closeConfirm"
-                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Close
                   </button>
@@ -115,12 +137,12 @@
               </DialogPanel>
             </TransitionChild>
           </div>
-        </Dialog>
-      </TransitionRoot>
+        </div>
+      </Dialog>
+    </TransitionRoot>
     </div>
     </main>
     </div>
-    
   </template>
   
   <script setup lang="ts">

@@ -4,7 +4,7 @@
       <section aria-labelledby="payments-heading" class="mx-auto max-w-7xl px-4 py-12">
         <div class="flex justify-between items-center mb-6">
           <h2 id="payments-heading" class="text-xl font-semibold">Payments</h2>
-          <button @click="openAdd" class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">
+          <button @click="openAdd" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 top-0 right-0">
             + New Payment
           </button>
         </div>
@@ -49,7 +49,18 @@
     <!-- Add/Edit Modal -->
     <TransitionRoot as="template" :show="open">
       <Dialog class="fixed inset-0 z-10 overflow-y-auto" @close="closeModal">
-        <div class="text-black flex items-center justify-center min-h-screen px-4">
+        <TransitionChild
+          as="template"
+          enter="ease-out duration-300"
+          enter-from="opacity-0"
+          enter-to="opacity-100"
+          leave="ease-in duration-200"
+          leave-from="opacity-100"
+          leave-to="opacity-0"
+        >
+          <div class="fixed inset-0 bg-gray-900 bg-opacity-50" aria-hidden="true" />
+        </TransitionChild>
+        <div class="text-black fixed inset-0 flex items-center justify-center px-4 py-6">
           <TransitionChild
             enter="ease-out duration-300"
             enter-from="opacity-0 scale-95"
@@ -58,7 +69,7 @@
             leave-from="opacity-100 scale-100"
             leave-to="opacity-0 scale-95"
           >
-            <DialogPanel class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+            <DialogPanel class="bg-white z-20 rounded-lg shadow-xl max-w-md w-full p-6">
               <DialogTitle class="text-lg font-medium mb-4">
                 {{ isEditing ? 'Edit Payment' : 'New Payment' }}
               </DialogTitle>

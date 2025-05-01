@@ -3,7 +3,7 @@
       <!-- Hero section -->
       <main class="flex-grow">
         <!-- Featured section -->
-        <section aria-labelledby="comfort-heading" class="bg-white mx-auto max-w-7xl h-page px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <section aria-labelledby="comfort-heading" class="bg-white mx-auto max-w-7xl h-page px-4 py-12">
           <div class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap">
             <div class="ml-4 mt-2">
               <h3 class="text-xl font-semibold text-gray-900">Stylist</h3>
