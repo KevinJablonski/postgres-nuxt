@@ -8,6 +8,8 @@ database: Postgres
 demoUrl: https://postgres-nuxt-kevins-projects-7a81c31c.vercel.app/
 ---
 
+## Admin Password: salon
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
