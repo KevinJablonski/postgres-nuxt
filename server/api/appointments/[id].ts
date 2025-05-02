@@ -51,8 +51,8 @@ export default defineEventHandler(async (event) => {
     }>>(event)
 
     if (
-      service_id       === undefined &&
-      status           === undefined &&
+      service_id           === undefined &&
+      status               === undefined &&
       appointment_datetime === undefined
     ) {
       throw createError({ statusCode: 400, statusMessage: 'No fields to update' })
@@ -62,28 +62,31 @@ export default defineEventHandler(async (event) => {
       const updated = await sql.begin(async tx => {
         await tx`SET TRANSACTION ISOLATION LEVEL SERIALIZABLE`
 
-        // if rescheduling, lock & delete the new slot
+        // If rescheduling, lock & delete the new slot
         if (appointment_datetime && slot_id) {
-          const slots = await tx`
+          const locks = await tx`
             SELECT id
               FROM availability
              WHERE id = ${slot_id}
              FOR UPDATE
           `
-          if (!slots.length) {
+          if (!locks.length) {
             throw createError({ statusCode: 409, statusMessage: 'Slot no longer available' })
           }
           await tx`DELETE FROM availability WHERE id = ${slot_id}`
         }
 
-        // perform the update
+        // Perform update, using NULL for undefined datetime
         const [appt] = await tx`
           UPDATE appointments
              SET
-               ${service_id         !== undefined ? tx`service_id           = ${service_id},`         : tx``}
-               ${status             !== undefined ? tx`status               = ${status},`             : tx``}
-               ${appointment_datetime !== undefined ? tx`appointment_datetime = ${appointment_datetime}::timestamp,` : tx``}
-               id = id  -- no-op to handle trailing comma
+               service_id = COALESCE(${service_id}, service_id),
+               status     = COALESCE(${status},     status),
+               appointment_datetime =
+                 COALESCE(
+                   ${appointment_datetime ?? null}::timestamp,
+                   appointment_datetime
+                 )
            WHERE id = ${id}
           RETURNING *
         `
@@ -94,6 +97,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, statusMessage: 'Appointment not found' })
       }
       return updated
+
     } catch (err: any) {
       console.error(`PUT /api/appointments/${id} error:`, err)
       throw createError({

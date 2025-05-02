@@ -352,6 +352,7 @@ async function submitAppt() {
     const date = slot.available_date.split('T')[0]
     const time = slot.available_time.slice(0,5)
     body.appointment_datetime = `${date}T${time}:00`
+    body.slot_id = selectedSlotId.value
   } else {
     // Editing: only include datetime/slot if changed
     if (selectedSlotId.value !== originalSlot.value?.id) {
