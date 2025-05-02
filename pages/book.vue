@@ -108,7 +108,7 @@
             >
               <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                 <div>
-                  <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                  <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 ">
                     <CheckIcon class="h-6 w-6 text-green-600" aria-hidden="true" />
                   </div>
                   <div class="mt-3 text-center sm:mt-5">
@@ -155,7 +155,9 @@
     TransitionChild,
     TransitionRoot,
   } from '@headlessui/vue'
-  
+  import {
+CheckIcon
+} from '@heroicons/vue/24/outline'
   interface Service   { id: number; name: string; price: string }
   interface Stylist   { id: number; name: string }
   interface Slot      { id: number; stylist_id: number; available_date: string; available_time: string }

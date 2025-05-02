@@ -43,86 +43,86 @@
             <h3 class="text-xl font-semibold mb-4">Your Review</h3>
             <form @submit.prevent="submitReview" class="space-y-6">
   <!-- Row 1: Booking Code & Name -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label class="block text-sm font-medium">Booking Code</label>
-      <input
-        v-model="form.booking_code"
-        type="text" maxlength="8" required
-        class="w-full border rounded p-2"
-        placeholder="8-char code"
-      />
-    </div>
-    <div>
-      <label class="block text-sm font-medium">Name</label>
-      <input
-        v-model="form.name"
-        type="text" required
-        class="w-full border rounded p-2"
-        placeholder="Your name"
-      />
-    </div>
-  </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium">Booking Code</label>
+                  <input
+                    v-model="form.booking_code"
+                    type="text"  required
+                    class="w-full border rounded p-2"
+                    placeholder="8-char code"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium">Name</label>
+                  <input
+                    v-model="form.name"
+                    type="text" required
+                    class="w-full border rounded p-2"
+                    placeholder="Your name"
+                  />
+                </div>
+              </div>
 
-  <!-- Row 2: Email & Rating -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label class="block text-sm font-medium">Email</label>
-      <input
-        v-model="form.email"
-        type="email" required
-        class="w-full border rounded p-2"
-        placeholder="you@example.com"
-      />
-    </div>
-    <div>
-    <label class="block text-sm font-medium mb-1">Rating</label>
-    <div class="flex space-x-1">
-      <button
-        v-for="n in 5"
-        :key="n"
-        @click="form.rating = n"
-        type="button"
-        class="focus:outline-none"
-      >
-        <component
-          :is="n <= form.rating ? SolidStar : OutlineStar"
-          class="w-6 h-6"
-          :class="n <= form.rating ? 'text-yellow-400' : 'text-gray-300'"
-        />
-      </button>
-    </div>
-  </div>
-  </div>
+              <!-- Row 2: Email & Rating -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium">Email</label>
+                  <input
+                    v-model="form.email"
+                    type="email" required
+                    class="w-full border rounded p-2"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div>
+                <label class="block text-sm font-medium mb-1">Rating</label>
+                <div class="flex space-x-1">
+                  <button
+                    v-for="n in 5"
+                    :key="n"
+                    @click="form.rating = n"
+                    type="button"
+                    class="focus:outline-none"
+                  >
+                    <component
+                      :is="n <= form.rating ? SolidStar : OutlineStar"
+                      class="w-6 h-6"
+                      :class="n <= form.rating ? 'text-yellow-400' : 'text-gray-300'"
+                    />
+                  </button>
+                </div>
+              </div>
+              </div>
 
-  <!-- Row 3: Comment (full width) -->
-  <div>
-    <label class="block text-sm font-medium">Comment</label>
-    <textarea
-      v-model="form.comment"
-      rows="4"
-      class="w-full border rounded p-2"
-      placeholder="Your feedback..."
-    />
-  </div>
+              <!-- Row 3: Comment (full width) -->
+              <div>
+                <label class="block text-sm font-medium">Comment</label>
+                <textarea
+                  v-model="form.comment"
+                  rows="4"
+                  class="w-full border rounded p-2"
+                  placeholder="Your feedback..."
+                />
+              </div>
 
-  <!-- Actions -->
-  <div class="flex justify-between pt-4">
-    <button
-      type="button"
-      @click="showForm = false"
-      class="px-4 py-2 border rounded hover:bg-gray-50"
-    >
-      Back
-    </button>
-    <button
-      type="submit"
-      class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-    >
-      Submit
-    </button>
-  </div>
-</form>
+              <!-- Actions -->
+              <div class="flex justify-between pt-4">
+                <button
+                  type="button"
+                  @click="showForm = false"
+                  class="px-4 py-2 border rounded hover:bg-gray-50"
+                >
+                  Back
+                </button>
+                <button
+                  type="submit"
+                  class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
             <p v-if="message" class="mt-4 text-green-600">{{ message }}</p>
             <p v-if="error"   class="mt-4 text-red-600">{{ error }}</p>
           </div>
