@@ -8,6 +8,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-
+  routeRules: {
+    '/admin/**': { appMiddleware: 'admin' }
+  },
+  runtimeConfig: {
+    public: {
+      adminPassword: process.env.ADMIN_PASSWORD
+    }
+  },
   compatibilityDate: '2025-02-05',
 })
